@@ -1,5 +1,4 @@
 //       https://webpack.js.org/guides/getting-started/#basic-setup:~:text=%7C%2D%20index.js-,webpack.config.js,-const%20path%20%3D
-import path from 'path';
 //       https://webpack.js.org/concepts/#plugins:~:text=const%20HtmlWebpackPlugin%20%3D%20require(%27html%2Dwebpack%2Dplugin%27)%3B
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
