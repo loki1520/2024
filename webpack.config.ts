@@ -10,7 +10,7 @@ import { BuildEnv, BuildPath } from './config/build/types/config';
 // export default config;
 export default (env: BuildEnv) => {
   const paths: BuildPath = {
-    entry: path.resolve(__dirname, 'src', 'index.ts'), // для создания абсолют пути, Директория, где находится текущий файл (__dirname).
+    entry: path.resolve(__dirname, 'src', 'index.tsx'), // для создания абсолют пути, Директория, где находится текущий файл (__dirname).
     build: path.resolve(__dirname, 'build'),
     html: path.resolve(__dirname, 'public', 'index.html'),
   }
