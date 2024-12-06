@@ -1,17 +1,20 @@
-import React from 'react';
-import Counter from './components/Counter';
-import './index.scss'
+import './styles/index.scss';
 import { Route, Routes, Link } from 'react-router-dom';
 import { AboutPageLazy } from './pages/AboutPage/AboutPage.lazy';
 import { MainPageLazy } from './pages/MainPage/MainPage.lazy';
 import { Suspense } from 'react';
+import { useTheme } from './theme/useTheme';
 //    https://react.dev/reference/react/lazy
 
+// App стал пропсом children для провайдера
 const App = () => {
+  // создали отдельный хук
+  const { theme, changeTheme } = useTheme();
   return (
-    <div className='app'>
+    <div className={`app ${theme}`}>
       <Link to="/about">About</Link>
       <Link to="/">Main</Link>
+      <button onClick={changeTheme}>Change Theme</button>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/about" element={<AboutPageLazy />} />

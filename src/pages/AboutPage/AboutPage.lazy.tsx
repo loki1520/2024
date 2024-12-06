@@ -6,7 +6,12 @@ import {lazy} from "react";
 // for testing loading...
 export const AboutPageLazy = lazy(() => new Promise((resolve) => {
   setTimeout(() => {
-    // @ts-ignore
-        resolve(import('./AboutPage'));
-    }, 1500);
+    resolve(
+      // @ts-ignore
+      import('./AboutPage').then((module) => {
+        console.log("Модуль загружен:", module); // Лог загруженного модуля
+        return module; // Обязательно возвращаем default-экспорт
+      })
+    );
+  }, 1500);
 }));
