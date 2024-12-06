@@ -1,10 +1,8 @@
 import { render } from "react-dom";
-import Counter from "./components/Counter";
+import App from "./App";
 // чтобы не просил импортировать реакт - в tsconfig.json ---> "compilerOptions": { ---> "jsx": "react-jsx" }
 
 render(
-  <div>
-    <Counter />
-  </div>,
+  <App />,
   document.getElementById("root")
 );
