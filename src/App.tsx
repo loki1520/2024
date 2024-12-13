@@ -4,15 +4,16 @@ import { AboutPageLazy } from './pages/AboutPage/AboutPage.lazy';
 import { MainPageLazy } from './pages/MainPage/MainPage.lazy';
 import './styles/index.scss';
 import { useTheme } from './theme/useTheme';
+import classNames from './helpers/classNames'; // можно использовать и библиотеку classnames, но сделал свою, for training)
 //    https://react.dev/reference/react/lazy
 
 // App стал пропсом children для провайдера
 const App = () => {
   // создали отдельный хук
   const { theme, changeTheme } = useTheme(); 
-
+ 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames('app', {}, [theme])}>
       <Link to="/about">About</Link>
       <Link to="/">Main</Link>
       <button onClick={changeTheme}>Change Theme</button>
