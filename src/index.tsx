@@ -1,12 +1,12 @@
 import { render } from "react-dom";
-import App from "./App";
+import App from "./app/App";
 import { BrowserRouter } from "react-router-dom";
-import ThemeProvider from "./theme/ThemeProvider";
+import { ThemeProvider } from "./app/providers/ThemeProvider";
 // чтобы не просил импортировать реакт - в tsconfig.json ---> "compilerOptions": { ---> "jsx": "react-jsx" }
 
 render(
   <BrowserRouter>
-    <ThemeProvider>
+    <ThemeProvider> 
       <App />,  
     </ThemeProvider>
   </BrowserRouter>,

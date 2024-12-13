@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from 'react';
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 
 // LocalStorage всегда возвращает строку поэтому приводим типы к Theme либо по умолчанию выставляем Theme.LIGHT
 const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
@@ -13,7 +13,7 @@ const ThemeProvider: FC = ({ children }) => {
     theme: theme,
     setTheme: setTheme,
   }), [theme]);
-
+ 
   return (
     // провайдер нам нужен Чтобы иметь глобальный доступ с любого компонента к темам 
     // Так как в провайдер мы будем передавать другой реакт компонент, мы должны его передать туда с помощью пропсов

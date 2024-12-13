@@ -20,7 +20,7 @@ export function  buildWebpackConfig(options: BuildOptions): webpack.Configuratio
     module: { // для TS
       rules: buildLoaders(options),
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options),
     // npm install --save-dev webpack-dev-server@4.7.4 @types/webpack-dev-server@4.7.2    типы не забываем ставить для TS
     devtool: isDev ? 'inline-source-map' : undefined, // отслеживание в каком файле произошла ошибка      https://webpack.js.org/guides/development/#:~:text=js%27%2C%0A%20%20%20%7D%2C%0A%2B-,devtool%3A%20%27inline%2Dsource%2Dmap%27%2C,-plugins%3A%20%5B%0A%20%20%20%20%20new
     devServer: isDev ? buildDevServer(options) : undefined, //дев серв для динамич изменения проекта

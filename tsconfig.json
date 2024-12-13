@@ -11,10 +11,13 @@
     "jsx": "react-jsx",    // Компилятор будет обрабатывать не только TS файлы, но и JS файлы, -jsx lj,fdkty xnj,s TS не ругался на отсутсвие импорта реакта в файлах
     "allowJs": true,
     // для абсолютного импорта
-    // "baseUrl": ".",
+    "baseUrl": ".", // #1 Все абсолютные экспорты и импорты будут идти из папки src
+    "paths": {
+      "*": ["./src/*"] // #2 Все абсолютные экспорты и импорты будут идти из папки src
+    },
     "moduleResolution": "node",
     // esModuleInterop позволяет работать с пакетами, которые используют
-    // common js как с обычными пакета с помощью import (require() module.export) = common js
+    // common js как с обычными пакета с  помощью import (require() module.export) = common js
     // import Moment from 'moment' без флага esModuleInterop результат undefined
     // console.log(Moment), c флагом результат [object Object]
     "esModuleInterop": true,
