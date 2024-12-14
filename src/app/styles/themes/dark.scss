@@ -1,5 +1,21 @@
 .app.dark {
-  --bg-color: var(--bs-body-bg, #212529);
-  --primary-color: var(--bs-primary, #0d6efd);
-  --secondary-color: var(--bs-secondary, #adb5bd);
+  --bg-color: #090949;
+  --inverted-bg-color: #e8e8ea;
+
+  --primary-color: #049604;
+  --secondary-color: #04ff04;
+  --inveted-primary-color: #0232c2;
+  --inveted-secondary-color: #0449e0;
 }
+
+// .app.dark {
+//   --bg-color: var(--bs-body-bg, #212529);
+//   --inverted-bg-color: var(--bs-body-bg, #f8f9fa);
+
+
+//   --primary-color: var(--bs-primary, #0d6efd);
+//   --secondary-color: var(--bs-secondary, #adb5bd);
+
+//   --inverted-primary-color: var(--bs-primary, #0d6efd);
+//   --invertedsecondary-color: var(--bs-secondary, #6c757d);
+// }
