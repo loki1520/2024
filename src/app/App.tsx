@@ -7,13 +7,12 @@ import { Navbar } from '@/widgets/Navbar';
 // App стал пропсом children для провайдера
 const App = () => { 
   // создали отдельный хук
-  const { theme, changeTheme } = useTheme(); 
+  const { theme } = useTheme(); 
 
   return (
     <div className={classNames('app', {}, [theme])}>
       <Navbar />
       <AppRouter />
-      <button  onClick={changeTheme}>Change Theme</button>
     </div>
   );
 };
