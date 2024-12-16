@@ -1,13 +1,12 @@
-//       https://webpack.js.org/guides/getting-started/#basic-setup:~:text=%7C%2D%20index.js-,webpack.config.js,-const%20path%20%3D
-//       https://webpack.js.org/concepts/#plugins:~:text=const%20HtmlWebpackPlugin%20%3D%20require(%27html%2Dwebpack%2Dplugin%27)%3B
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] { // тип возвращает массив плагинов
   // не имеет значения в каком порядке добавлять плагины, в отличии от лоадеров!!
-  return [  
+  const plugins: webpack.WebpackPluginInstance[] = [
     // для сборки HTML     https://webpack.js.org/plugins/html-webpack-plugin
     new HtmlWebpackPlugin({
       template: paths.html,
@@ -18,10 +17,21 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
     }),
-    // добавляет переменную __IS_DEV__ прокидывая ее во все скрипты с  помощью DefinePlugin (используем в i18n.ts)
+    // добавляет переменную __IS_DEV__ прокидывая ее во все скрипты с помощью DefinePlugin
     // https://webpack.js.org/plugins/define-plugin/
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
-    })
+    }),
+    // Hot Module Replacement (HMR)
+    // https://webpack.js.org/concepts/hot-module-replacement изменение файлов без перезагрузки браузера
+    // new webpack.HotModuleReplacementPlugin(),
   ];
+
+  // Добавление плагинов для разработки
+  if (isDev) {
+    plugins.push(new ReactRefreshWebpackPlugin());
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+  }
+
+  return plugins;
 }
