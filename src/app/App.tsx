@@ -4,6 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames"; // можно �
 import { AppRouter } from "@/app/providers/router/index";
 import { Navbar } from "@/widgets/Navbar";
 import { Sidebar } from "@/widgets/Sidebar";
+import { Suspense } from "react"; // обертка для i18n
 
 // App стал пропсом children для провайдера
 const App = () => {
@@ -12,11 +13,13 @@ const App = () => {
 
   return (
     <div className={classNames("app", {}, [theme])}>
-      <Navbar />
-      <div className="content-page">
-        <Sidebar />
-        <AppRouter />
-      </div>
+      <Suspense fallback="loading">
+        <Navbar />
+        <div className="content-page">
+          <Sidebar />
+          <AppRouter />
+        </div>
+      </Suspense>
     </div>
   );
 };
