@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
     extends: [
         'airbnb',
@@ -29,6 +30,7 @@ module.exports = {
     },
     plugins: ['@typescript-eslint', 'react', 'i18next'],
     rules: {
+        'max-len': ['error', { code: 100, ignoreComments: true }], // Задает максимальную длину строки в символах
         'react/jsx-indent': [2, 4], // Задает отступы для JSX-разметки (2 - ошибка, 4 пробела для отступа)
         'react/jsx-indent-props': [2, 4], // Задает отступы для пропсов в JSX (2 - ошибка, 4 пробела)
         indent: [2, 4], // Общие правила отступов для JavaScript и TypeScript файлов (4 пробела)
