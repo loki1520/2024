@@ -1,5 +1,4 @@
 import path from 'path';
-import webpack from 'webpack';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 import { BuildEnv, BuildPath } from './config/build/types/config';
 
@@ -9,26 +8,27 @@ import { BuildEnv, BuildPath } from './config/build/types/config';
 // мы возвращаем тот же конфиг, но только через прослойку функции чтобы подставить доп аргументы
 // export default config;
 export default (env: BuildEnv) => {
-  const paths: BuildPath = {
-    entry: path.resolve(__dirname, 'src', 'index.tsx'), // для создания абсолют пути, Директория, где находится текущий файл (__dirname).
-    build: path.resolve(__dirname, 'build'),
-    html: path.resolve(__dirname, 'public', 'index.html'),
-    src: path.resolve(__dirname, 'src'),
-  }
-  
-  const mode = env.mode || 'development'; 
-  const PORT = env.port ||  3000;
-  
-  const isDev = mode === 'development';
+    const paths: BuildPath = {
+        entry: path.resolve(__dirname, 'src', 'index.tsx'), // для создания абсолют пути, Директория, где находится текущий файл (__dirname).
+        build: path.resolve(__dirname, 'build'),
+        html: path.resolve(__dirname, 'public', 'index.html'),
+        src: path.resolve(__dirname, 'src'),
+    };
 
-  const config = buildWebpackConfig( // декомпозируем все в отд функцию
-    {
-      mode: mode,
-      paths: paths, 
-      isDev, 
-      port: PORT,
-    }
-  );
+    const mode = env.mode || 'development';
+    const PORT = env.port || 3000;
 
-  return config;
+    const isDev = mode === 'development';
+
+    const config = buildWebpackConfig(
+        // декомпозируем все в отд функцию
+        {
+            mode,
+            paths,
+            isDev,
+            port: PORT,
+        },
+    );
+
+    return config;
 };

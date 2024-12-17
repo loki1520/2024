@@ -7,19 +7,19 @@ import { Theme } from '@/app/providers/ThemeProvider';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 
 interface ThemeSwitcherProps {
-  className?: string;
+    className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
-  const { theme, changeTheme } = useTheme(); 
-  
-  return (
-    <Button
-      theme={ThemeButton.CLEAR}
-      className={classNames(cls.ThemeSwitcher, {}, [cls.marginLeft, className])}
-      onClick={changeTheme}
-    >
-      {theme === Theme.LIGHT ? <LigthIcon /> : <DarkIcon />}
-    </Button>
-  );
-};
+export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
+    const { theme, changeTheme } = useTheme();
+
+    return (
+        <Button
+            theme={ThemeButton.CLEAR}
+            className={classNames(cls.ThemeSwitcher, {}, [cls.marginLeft, className])}
+            onClick={changeTheme}
+        >
+            {theme === Theme.LIGHT ? <LigthIcon /> : <DarkIcon />}
+        </Button>
+    );
+}

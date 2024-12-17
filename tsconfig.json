@@ -8,7 +8,7 @@
     "module": "esnext",
     // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
-    "jsx": "react-jsx",    // Компилятор будет обрабатывать не только TS файлы, но и JS файлы, -jsx добавлен чтобы TS не ругался на отсутсвие импорта реакта в файлах
+    "jsx": "react-jsx", // Компилятор будет обрабатывать не только TS файлы, но и JS файлы, -jsx добавлен чтобы TS не ругался на отсутсвие импорта реакта в файлах
     "allowJs": true,
     // для абсолютного импорта
     "baseUrl": ".", // #1 Все абсолютные экспорты и импорты будут идти из папки src
@@ -20,7 +20,7 @@
     // common js как с обычными пакета с  помощью import (require() module.export) = common js
     // import Moment from 'moment' без флага esModuleInterop результат undefined
     // console.log(Moment), c флагом результат [object Object]
-    "esModuleInterop": true,
+    "esModuleInterop": true
     // Если какая-либо библиотека не имеет default import,
     // лоадеры вроде ts-loader или babel-loader автоматически создают их
     // вместо такого импорта
@@ -32,7 +32,7 @@
   // https://webpack.js.org/configuration/configuration-languages/#:~:text=%22ts%2Dnode%22%3A%20%7B%0A%20%20%20%20%22compilerOptions%22%3A%20%7B%0A%20%20%20%20%20%20%22module%22%3A%20%22CommonJS%22%0A%20%20%20%20%7D%0A%20%20%7D
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
+      "module": "CommonJS"
     }
   }
 }
