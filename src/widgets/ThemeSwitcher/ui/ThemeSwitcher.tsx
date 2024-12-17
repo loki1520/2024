@@ -1,5 +1,4 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ThemeSwitcher.module.scss';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 import LigthIcon from '@/shared/assets/icons/theme-light.svg'; // чтобы компилятор не ругался на несуществующий файл, добавим в глобальную декларацию типов global.d.ts
 import DarkIcon from '@/shared/assets/icons/theme-dark.svg';
@@ -16,7 +15,7 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
     return (
         <Button
             theme={ThemeButton.CLEAR}
-            className={classNames(cls.ThemeSwitcher, {}, [cls.marginLeft, className])}
+            className={classNames('', {}, [className])}
             onClick={changeTheme}
         >
             {theme === Theme.LIGHT ? <LigthIcon /> : <DarkIcon />}
