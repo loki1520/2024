@@ -13,7 +13,7 @@ module.exports = {
         'plugin:i18next/recommended',
     ],
     overrides: [
-        {
+        { 
             env: {
                 node: true,
             },

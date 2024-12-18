@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types/config';
@@ -23,15 +24,15 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        // Hot Module Replacement (HMR)
-        // https://webpack.js.org/concepts/hot-module-replacement изменение файлов без перезагрузки браузера
-        // new webpack.HotModuleReplacementPlugin(),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }), // https://www.npmjs.com/package/webpack-bundle-analyzer
     ];
 
     // Добавление плагинов для разработки
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin({ overlay: false }));
-        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new webpack.HotModuleReplacementPlugin()); // https://webpack.js.org/concepts/hot-module-replacement изменение файлов без перезагрузки браузера
     }
 
     return plugins;
