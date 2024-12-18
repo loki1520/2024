@@ -9,7 +9,7 @@ type NavbarProps = {
 export function Navbar({ className }: NavbarProps) {
     // доп классы передаем через пропсы в additional
     const { t: aboutTranslation } = useTranslation('about'); // для перевода в пространстве "about"
-    const { t: homeTranslation } = useTranslation('main'); // для перевода в пространстве "home"
+    const { t: homeTranslation } = useTranslation();
 
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>

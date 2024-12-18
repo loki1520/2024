@@ -4,14 +4,11 @@ import webpack from 'webpack';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types/config';
 
-export function buildPlugins({
-    paths,
-    isDev,
-}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
     // тип возвращает массив плагинов
     // не имеет значения в каком порядке добавлять плагины, в отличии от лоадеров!!
     const plugins: webpack.WebpackPluginInstance[] = [
-    // для сборки HTML     https://webpack.js.org/plugins/html-webpack-plugin
+        // для сборки HTML     https://webpack.js.org/plugins/html-webpack-plugin
         new HtmlWebpackPlugin({
             template: paths.html,
         }), // если HtmlWebpackPlugin вызвать без аргумента, то в собранном html не будет виден основной ДИВ РУУТ для просмотра времени сборки
@@ -26,14 +23,14 @@ export function buildPlugins({
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-    // Hot Module Replacement (HMR)
-    // https://webpack.js.org/concepts/hot-module-replacement изменение файлов без перезагрузки браузера
-    // new webpack.HotModuleReplacementPlugin(),
+        // Hot Module Replacement (HMR)
+        // https://webpack.js.org/concepts/hot-module-replacement изменение файлов без перезагрузки браузера
+        // new webpack.HotModuleReplacementPlugin(),
     ];
 
     // Добавление плагинов для разработки
     if (isDev) {
-        plugins.push(new ReactRefreshWebpackPlugin());
+        plugins.push(new ReactRefreshWebpackPlugin({ overlay: false }));
         plugins.push(new webpack.HotModuleReplacementPlugin());
     }
 

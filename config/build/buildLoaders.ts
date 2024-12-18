@@ -34,9 +34,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                 options: {
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: options.isDev
-                            ? '[path][name]__[local]'
-                            : '[hash:base64:8]',
+                        localIdentName: options.isDev ? '[path][name]__[local]' : '[hash:base64:8]',
                     },
                 },
             },
@@ -47,7 +45,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     // если бы не использовали TS, то нужно было бы использовать babel-loader
     const typeScriptliader = {
-    // выносим в отд переменную чтобы видеть последовательность лоадеров
+        // выносим в отд переменную чтобы видеть последовательность лоадеров
         test: /\.tsx?$/, // отлавливает ts и tsx
         use: 'ts-loader',
         exclude: /node_modules/, // исключение
