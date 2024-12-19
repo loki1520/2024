@@ -9,11 +9,11 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
-        'plugin:prettier/recommended', // Это включает конфигурацию Prettier
+        'plugin:prettier/recommended',
         'plugin:i18next/recommended',
     ],
     overrides: [
-        { 
+        {
             env: {
                 node: true,
             },

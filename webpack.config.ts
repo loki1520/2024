@@ -1,15 +1,11 @@
+import webpack from 'webpack';
 import path from 'path';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
-import { BuildEnv, BuildPath } from './config/build/types/config';
+import { BuildEnv, BuildPaths } from './config/build/types/config';
 
-// https://webpack.js.org/guides/environment-variables/
-// чтобы запускать с опред параметрами, по доке необходимо теперь не экспортировать сонфиг,
-// а импортировать функцию, которая аргументами и принимает эти переменные окружения
-// мы возвращаем тот же конфиг, но только через прослойку функции чтобы подставить доп аргументы
-// export default config;
 export default (env: BuildEnv) => {
-    const paths: BuildPath = {
-        entry: path.resolve(__dirname, 'src', 'index.tsx'), // для создания абсолют пути, Директория, где находится текущий файл (__dirname).
+    const paths: BuildPaths = {
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
         src: path.resolve(__dirname, 'src'),
@@ -20,15 +16,12 @@ export default (env: BuildEnv) => {
 
     const isDev = mode === 'development';
 
-    const config = buildWebpackConfig(
-        // декомпозируем все в отд функцию
-        {
-            mode,
-            paths,
-            isDev,
-            port: PORT,
-        },
-    );
+    const config: webpack.Configuration = buildWebpackConfig({
+        mode,
+        paths,
+        isDev,
+        port: PORT,
+    });
 
     return config;
 };

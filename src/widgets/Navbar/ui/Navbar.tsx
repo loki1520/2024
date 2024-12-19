@@ -1,30 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import cls from './Navbar.module.scss';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 
-type NavbarProps = {
+interface NavbarProps {
     className?: string;
-};
-export function Navbar({ className }: NavbarProps) {
-    // доп классы передаем через пропсы в additional
-    const { t: aboutTranslation } = useTranslation('about'); // для перевода в пространстве "about"
-    const { t: homeTranslation } = useTranslation();
-
-    return (
-        <div className={classNames(cls.Navbar, {}, [className])}>
-            <div className={cls.links}>
-                <AppLink className={cls.mainLink} theme={AppLinkTheme.SECONDARY} to="/about">
-                    {aboutTranslation('О сайте')}
-                </AppLink>
-                <AppLink theme={AppLinkTheme.PRIMARY} to="/">
-                    {homeTranslation('Главная страница')}
-                </AppLink>
-            </div>
-        </div>
-    );
 }
 
-// здесь создал кастомный компонент AppLink, который является измененным от
-// дефолтного Link из react-router-dom
-// мпоненты без асинх чанка экспортируем именнованными, а не по дефолту
+export const Navbar = ({ className }: NavbarProps) => (
+    <div className={classNames(cls.Navbar, {}, [className])}>
+        <div className={cls.links}>
+            <AppLink theme={AppLinkTheme.SECONDARY} to="/" className={cls.mainLink}>
+                Главная
+            </AppLink>
+            <AppLink theme={AppLinkTheme.RED} to="/about">
+                О сайте
+            </AppLink>
+        </div>
+    </div>
+);

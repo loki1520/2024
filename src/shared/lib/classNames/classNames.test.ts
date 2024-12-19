@@ -1,28 +1,33 @@
 import { classNames } from './classNames';
 
 describe('classNames', () => {
-    test('test', () => {
+    test('with only first param', () => {
         expect(classNames('someClass')).toBe('someClass');
     });
-    test('test with additional params', () => {
-        expect(classNames('someClass', {}, ['class1', 'class2'])).toBe('someClass class1 class2');
+
+    test('with additional class', () => {
+        const expected = 'someClass class1 class2';
+        expect(classNames('someClass', {}, ['class1', 'class2'])).toBe(expected);
     });
-    test('test with mods', () => {
+
+    test('with mods', () => {
+        const expected = 'someClass class1 class2 hovered scrollable';
         expect(
-            classNames('someClass', { classMod1: true, classMod2: true }, [
-                'classAddit1',
-                'classAddit2',
-            ]),
-        ).toBe('someClass classMod1 classMod2 classAddit1 classAddit2');
+            classNames('someClass', { hovered: true, scrollable: true }, ['class1', 'class2']),
+        ).toBe(expected);
     });
-    test('test with false mods', () => {
+
+    test('with mods false', () => {
+        const expected = 'someClass class1 class2 hovered';
         expect(
-            classNames('someClass', { classMod1: false, classMod2: undefined }, [
-                'classAddit1',
-                'classAddit2',
-            ]),
-        ).toBe('someClass classAddit1 classAddit2');
+            classNames('someClass', { hovered: true, scrollable: false }, ['class1', 'class2']),
+        ).toBe(expected);
+    });
+
+    test('with mods undefined', () => {
+        const expected = 'someClass class1 class2 hovered';
+        expect(
+            classNames('someClass', { hovered: true, scrollable: undefined }, ['class1', 'class2']),
+        ).toBe(expected);
     });
 });
-
-// npm run unit classNames.test.ts
