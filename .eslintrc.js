@@ -46,11 +46,25 @@ module.exports = {
         'no-shadow': 'off', // Отключает проверку на затенение переменных (когда переменная в блоке имеет то же имя, что и во внешнем)
         'import/no-extraneous-dependencies': 'off', // Отключает проверку на лишние зависимости (когда модули не указаны в package.json)
         'no-underscore-dangle': 'off', // Отключает правило, запрещающее использование нижнего подчеркивания в именах переменных
+        'jsx-quotes': ['error', 'prefer-double'], // Включает двойные кавычки внутри JSX
+        quotes: [
+            'error',
+            'single',
+            { avoidEscape: true }, // Одинарные кавычки вне JSX
+        ],
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['to', 'fallback'] },
+            { markupOnly: true, ignoreAttribute: ['to', 'fallback', 'data-testid'] },
         ], // Вызывает ошибку при использовании строковых литералов в JSX (проверка на отсутствие локализации)
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
     globals: {
         __IS_DEV__: true,
     },

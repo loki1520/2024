@@ -2,8 +2,25 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
+import path from 'path';
 
 export default {
+    clearMocks: true,
+    testEnvironment: 'jsdom',
+    coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
+    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
+    moduleDirectories: ['node_modules'],
+    modulePaths: ['<rootDir>src'],
+    testMatch: [
+        // работает на МАК ОС и ВИНДЕ!!!
+        '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
+    ],
+    rootDir: '../../',
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
@@ -14,16 +31,6 @@ export default {
     // cacheDirectory: "C:\\Users\\tim\\AppData\\Local\\Temp\\jest",
 
     // Automatically clear mock calls, instances and results before every test
-    clearMocks: true,
-    testEnvironment: 'jsdom',
-    coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
-    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-    moduleDirectories: ['node_modules'],
-    testMatch: [
-        // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
-        '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
-    ],
-    rootDir: '../../',
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
