@@ -8,17 +8,16 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ className }: NavbarProps) => {
-    // доп классы передаем через пропсы в additional
-    const { t: aboutTranslation } = useTranslation('about'); // для перевода в пространстве "about"
-    const { t: homeTranslation } = useTranslation();
+    const { t } = useTranslation();
+
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
             <div className={cls.links}>
                 <AppLink theme={AppLinkTheme.SECONDARY} to="/" className={cls.mainLink}>
-                    {homeTranslation('Главная страница')}
+                    {t('Главная')}
                 </AppLink>
                 <AppLink theme={AppLinkTheme.RED} to="/about">
-                    {aboutTranslation('О сайте')}
+                    {t('О сайте')}
                 </AppLink>
             </div>
         </div>
