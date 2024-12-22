@@ -4,17 +4,16 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['airbnb', 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'plugin:prettier/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended', 'plugin:storybook/recommended', 'plugin:storybook/recommended'],
-    overrides: [
-        {
-            env: {
-                node: true,
-            },
-            files: ['.eslintrc.{js,cjs}'],
-            parserOptions: {
-                sourceType: 'script',
-            },
-        },
+    extends: [
+        'airbnb',
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
+        'plugin:prettier/recommended',
+        'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
+        'plugin:storybook/recommended',
+        'plugin:storybook/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -40,6 +39,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off', // Отключает проверку на лишние зависимости (когда модули не указаны в package.json)
         'no-underscore-dangle': 'off', // Отключает правило, запрещающее использование нижнего подчеркивания в именах переменных
         'jsx-quotes': ['error', 'prefer-double'], // Включает двойные кавычки внутри JSX
+        'react/jsx-props-no-spreading': 'off',
         quotes: [
             'error',
             'single',
@@ -51,6 +51,15 @@ module.exports = {
         ], // Вызывает ошибку при использовании строковых литералов в JSX (проверка на отсутствие локализации)
     },
     overrides: [
+        {
+            env: {
+                node: true,
+            },
+            files: ['.eslintrc.{js,cjs}'],
+            parserOptions: {
+                sourceType: 'script',
+            },
+        },
         {
             files: ['**/src/**/*.test.{ts,tsx}'],
             rules: {
