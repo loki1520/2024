@@ -25,15 +25,13 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
         <div
             data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
-        >
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
             <Button
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
                 className={cls.collapseBtn}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
-                square
-            >
+                square>
                 {collapsed ? '>' : '<'}
             </Button>
             <div className={cls.items}>

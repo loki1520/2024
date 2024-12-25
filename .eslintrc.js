@@ -21,7 +21,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint', 'react', 'i18next'],
+    plugins: ['@typescript-eslint', 'react', 'i18next', 'react-hooks'],
     rules: {
         'max-len': ['error', { code: 100, ignoreComments: true }], // Задает максимальную длину строки в символах
         'react/jsx-indent': [2, 4], // Задает отступы для JSX-разметки (2 - ошибка, 4 пробела для отступа)
@@ -41,6 +41,8 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off', // Отключает проверку на лишние зависимости (когда модули не указаны в package.json)
         'no-underscore-dangle': 'off', // Отключает правило, запрещающее использование нижнего подчеркивания в именах переменных
         'jsx-quotes': ['error', 'prefer-double'], // Включает двойные кавычки внутри JSX
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies // https://legacy.reactjs.org/docs/hooks-rules.html
         quotes: [
             'error',
             'single',
@@ -50,6 +52,9 @@ module.exports = {
             'error',
             { markupOnly: true, ignoreAttribute: ['to', 'fallback', 'data-testid'] },
         ], // Вызывает ошибку при использовании строковых литералов в JSX (проверка на отсутствие локализации)
+        // Отключаем проверку переноса аргументов в объектах
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
     },
     overrides: [
         {
@@ -62,9 +67,10 @@ module.exports = {
             },
         },
         {
-            files: ['**/src/**/*.test.{ts,tsx}'],
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
+                'max-len': 'off',
             },
         },
     ],
