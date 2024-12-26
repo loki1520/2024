@@ -43,6 +43,7 @@ module.exports = {
         'jsx-quotes': ['error', 'prefer-double'], // Включает двойные кавычки внутри JSX
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies // https://legacy.reactjs.org/docs/hooks-rules.html
+        'no-param-reassign': 'off', // в ридаксе можно менять параметры, в линтере отключаем запрет на это
         quotes: [
             'error',
             'single',
