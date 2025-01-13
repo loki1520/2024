@@ -25,7 +25,9 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
         <div
             data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
+                className,
+            ])}>
             <Button
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
@@ -35,12 +37,18 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 {collapsed ? '>' : '<'}
             </Button>
             <div className={cls.items}>
-                <AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.main} className={cls.item}>
+                <AppLink
+                    theme={AppLinkTheme.SECONDARY}
+                    to={RoutePath.main}
+                    className={cls.item}>
                     <MainIcon className={cls.icon} />
                     <span className={cls.link}>{t('Главная')}</span>
                 </AppLink>
 
-                <AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.about} className={cls.item}>
+                <AppLink
+                    theme={AppLinkTheme.SECONDARY}
+                    to={RoutePath.about}
+                    className={cls.item}>
                     <AboutIcon className={cls.icon} />
                     <span className={cls.link}>{t('О сайте')}</span>
                 </AppLink>

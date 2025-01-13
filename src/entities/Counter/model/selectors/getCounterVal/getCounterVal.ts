@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { getCounter } from '../getCounter/getCounter';
 import { CounterSchema } from '../../types/counterSchema';
 
-export const getCounterValue = createSelector(
+export const getCounterVal = createSelector(
     getCounter, // селектор, который возвращает объект CounterSchema
     (counter: CounterSchema) => counter.value, // колбэк функция, которая возвращает значение счетчика из объекта CounterSchema
 );

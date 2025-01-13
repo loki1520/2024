@@ -23,7 +23,7 @@ module.exports = {
     },
     plugins: ['@typescript-eslint', 'react', 'i18next', 'react-hooks'],
     rules: {
-        'max-len': ['error', { code: 100, ignoreComments: true }], // Задает максимальную длину строки в символах
+        'max-len': ['error', { code: 80, ignoreComments: true }], // Задает максимальную длину строки в символах
         'react/jsx-indent': [2, 4], // Задает отступы для JSX-разметки (2 - ошибка, 4 пробела для отступа)
         'react/jsx-indent-props': [2, 4], // Задает отступы для пропсов в JSX (2 - ошибка, 4 пробела)
         indent: [2, 4], // Общие правила отступов для JavaScript и TypeScript файлов (4 пробела)
@@ -44,6 +44,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies // https://legacy.reactjs.org/docs/hooks-rules.html
         'no-param-reassign': 'off', // в ридаксе можно менять параметры, в линтере отключаем запрет на это
+        'object-curly-spacing': 'off',
         quotes: [
             'error',
             'single',
