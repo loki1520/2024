@@ -2,8 +2,9 @@
   "decrement": "decrement",
   "increment": "increment",
   "throw error": "throw error",
+  "Авторизация": "Авторизация",
   "Введите": "Введите",
-  "Введите username": "Введите username",
+"Введите username": "Enter username",
   "Введите имя": "Enter name",
   "Введите пароль": "Enter password",
   "Войти": "Sign in",
@@ -15,5 +16,7 @@
   "Переключить": "Change",
   "Произошла непредвиденная ошибка": "An unexpected error has occurred",
   "Страница не найдена": "Page not found",
-  "Язык": "Language"
+  "Форма авторизации": "Authorization form",
+  "Язык": "Language",
+  "Вы ввели неверные данные": "You entered incorrect data"
 }

@@ -7,6 +7,7 @@ module.exports = {
     extends: [
         'airbnb',
         'eslint:recommended',
+
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:prettier/recommended',
@@ -20,7 +21,14 @@ module.exports = {
     },
     plugins: ['@typescript-eslint', 'react', 'i18next', 'react-hooks'],
     rules: {
-        'max-len': ['error', { code: 80, ignoreComments: true }], // Задает максимальную длину строки в символах
+        'max-len': [
+            'error',
+            {
+                code: 80,
+                ignoreComments: true, // Игнорировать комментарии
+                ignorePattern: '^import\\s.*', // Игнорировать паттерн импорта
+            },
+        ], // Задает максимальную длину строки в символах
         'react/jsx-indent': [2, 4], // Задает отступы для JSX-разметки (2 - ошибка, 4 пробела для отступа)
         'react/jsx-indent-props': [2, 4], // Задает отступы для пропсов в JSX (2 - ошибка, 4 пробела)
         indent: [2, 4], // Общие правила отступов для JavaScript и TypeScript файлов (4 пробела)
