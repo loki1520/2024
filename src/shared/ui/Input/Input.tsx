@@ -30,7 +30,7 @@ export const Input = (props: inputProps) => {
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
-    const [caretPosition, setCaretPosition] = useState(0); // перемещаем каретку
+    const [caretPosition, setCaretPosition] = useState(0);
 
     const ref = useRef<HTMLInputElement>(null);
 

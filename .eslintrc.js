@@ -7,13 +7,10 @@ module.exports = {
     extends: [
         'airbnb',
         'eslint:recommended',
-
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:prettier/recommended',
         'plugin:i18next/recommended',
-        'plugin:storybook/recommended',
-        'plugin:storybook/recommended',
         'plugin:storybook/recommended',
     ],
     parser: '@typescript-eslint/parser',
@@ -27,7 +24,10 @@ module.exports = {
         'react/jsx-indent': [2, 4], // Задает отступы для JSX-разметки (2 - ошибка, 4 пробела для отступа)
         'react/jsx-indent-props': [2, 4], // Задает отступы для пропсов в JSX (2 - ошибка, 4 пробела)
         indent: [2, 4], // Общие правила отступов для JavaScript и TypeScript файлов (4 пробела)
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }], // Разрешает использовать JSX только в файлах с расширениями .js, .jsx, .tsx
+        'react/jsx-filename-extension': [
+            2,
+            { extensions: ['.js', '.jsx', '.tsx'] },
+        ], // Разрешает использовать JSX только в файлах с расширениями .js, .jsx, .tsx
         'import/no-unresolved': 'off', // Отключает проверку на неразрешенные импорты (может быть полезно при алиасах)
         'import/prefer-default-export': 'off', // Отключает требование использовать default-экспорт, позволяет использовать именованные экспорты
         'no-unused-vars': 'off', // Отключает правило, предупреждающее о неиспользуемых переменных
@@ -52,7 +52,10 @@ module.exports = {
         ],
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['to', 'fallback', 'data-testid'] },
+            {
+                markupOnly: true,
+                ignoreAttribute: ['to', 'fallback', 'data-testid'],
+            },
         ], // Вызывает ошибку при использовании строковых литералов в JSX (проверка на отсутствие локализации)
         // Отключаем проверку переноса аргументов в объектах
         'jsx-a11y/no-static-element-interactions': 'off',
