@@ -4,10 +4,12 @@
   "throw error": "throw error",
   "Авторизация": "Авторизация",
   "Введите": "Введите",
-"Введите username": "Enter username",
+  "Введите username": "Enter username",
   "Введите имя": "Enter name",
   "Введите пароль": "Enter password",
   "Войти": "Sign in",
+  "Вы ввели неверные данные": "You entered incorrect data",
+  "Выйти": "Выйти",
   "Главная": "Главная",
   "Главная страница": "Home page",
   "Короткий язык": "Short language",
@@ -17,6 +19,5 @@
   "Произошла непредвиденная ошибка": "An unexpected error has occurred",
   "Страница не найдена": "Page not found",
   "Форма авторизации": "Authorization form",
-  "Язык": "Language",
-  "Вы ввели неверные данные": "You entered incorrect data"
+  "Язык": "Language"
 }

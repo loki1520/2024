@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'; // Функция для с
 import axios from 'axios'; // Библиотека для отправки HTTP-запросов
 import { User, userActions } from 'entities/User'; // Импортируем тип User и экшены из сущности User
 import i18n from 'shared/config/i18n/i18n';
-// import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage'; // Импортируем ключ для локального хранилища
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage'; // Импортируем ключ для локального хранилища
 
 // Определяем интерфейс для данных авторизации
 interface LoginByUsernameProps {
@@ -29,14 +29,14 @@ export const loginByUsername = createAsyncThunk<
             throw new Error();
         }
 
-        // // Если авторизация успешна, сохраняем данные пользователя в локальное хранилище
-        // localStorage.setItem(
-        //     USER_LOCALSTORAGE_KEY,           // Ключ для сохранения данных в localStorage
-        //     JSON.stringify(response.data),   // Сериализуем объект данных пользователя в строку
-        // );
+        // Если авторизация успешна, сохраняем данные пользователя в локальное хранилище
+        localStorage.setItem(
+            USER_LOCALSTORAGE_KEY, // Ключ для сохранения данных в localStorage. т.к. данные там хранятся строками
+            JSON.stringify(response.data), // Сериализуем объект данных пользователя в строку
+        );
 
         // // Диспатчим экшен для обновления состояния пользователя в Redux Store
-        // thunkAPI.dispatch(userActions.setAuthData(response.data));
+        thunkAPI.dispatch(userActions.setAuthData(response.data));
 
         // Возвращаем данные пользователя, которые будут переданы в редьюсер
         return response.data;
