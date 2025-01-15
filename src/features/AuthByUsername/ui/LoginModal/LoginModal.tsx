@@ -22,7 +22,7 @@ export const LoginModal = ({ className, isOpen, onClose }: LoginModalProps) => {
                 {/* Ожидает завершения загрузки асинхронного компонента LoginFormAsync.
                 Пока загрузка идет, вместо содержимого рендерится то,
                 что указано в fallback */}
-                <LoginFormAsync />
+                <LoginFormAsync onSuccess={onClose} />
             </Suspense>
         </Modal>
     );
