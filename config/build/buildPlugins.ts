@@ -26,16 +26,15 @@ export function buildPlugins({
         }),
     ];
 
-    // Плагин для анализа размера бандлов, автоматически добавляется в режиме разработки
-    plugins.push(
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false, // Отключает автоматическое открытие анализа в браузере
-        }),
-    );
-
     if (isDev) {
         // Плагин для поддержки "горячей замены модулей" (HMR) в режиме разработки
         plugins.push(new webpack.HotModuleReplacementPlugin());
+        // Плагин для анализа размера бандлов, автоматически добавляется в режиме разработки
+        plugins.push(
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false, // Отключает автоматическое открытие анализа в браузере
+            }),
+        );
     }
 
     return plugins; // Возвращаем массив плагинов для Webpack
