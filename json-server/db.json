@@ -21,11 +21,18 @@
   "users": [
     {
       "id": 1,
-      "username": "admin",
-      "password": "123"
+      "username": "1",
+      "password": "1"
     }
   ],
   "profile": {
-    "name": "typicode"
+    "first": "Loki",
+    "lastname": "Leprechaun",
+    "age": 37,
+    "currency": "USD",
+    "country": "USA",
+    "city": "New York",
+    "username": "admin",
+    "avatar": "../src/shared/assets/icons/leprechaun-avatar.jpg"
   }
 }

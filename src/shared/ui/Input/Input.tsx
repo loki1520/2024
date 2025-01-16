@@ -18,7 +18,7 @@ interface inputProps extends HTMLInputProps {
     autofocus?: boolean;
 }
 
-export const Input = (props: inputProps) => {
+export const Input = memo((props: inputProps) => {
     const {
         className,
         value,
@@ -84,4 +84,6 @@ export const Input = (props: inputProps) => {
             </div>
         </div>
     );
-};
+});
+
+Input.displayName = 'Input';
