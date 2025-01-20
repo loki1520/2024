@@ -11,11 +11,16 @@ const defaultAsyncReducers: ReducersList = {
 };
 
 export const StoreDecorator =
-    // eslint-disable-next-line prettier/prettier
-    (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) => (StoryComponent: Story) => {
-        return (
-            <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
-                <StoryComponent />
-            </StoreProvider>
-        );
-    };
+    (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
+        (StoryComponent: Story) => {
+            return (
+                <StoreProvider
+                    initialState={state}
+                    asyncReducers={{
+                        ...defaultAsyncReducers,
+                        ...asyncReducers,
+                    }}>
+                    <StoryComponent />
+                </StoreProvider>
+            );
+        };
