@@ -69,6 +69,7 @@ module.exports = {
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react/display-name': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off', // Отключаем правило для всего проекта
     },
     overrides: [
         {

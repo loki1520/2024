@@ -21,14 +21,14 @@
   "users": [
     {
       "id": "1",
-      "username": "admin",
-      "password": "123"
+      "username": "1",
+      "password": "1"
     }
   ],
   "profile": {
-    "first": "Тимур",
-    "lastname": "Ульби",
-    "age": 22,
+    "first": "Loki",
+    "lastname": "Leprechaun",
+    "age": 37,
     "currency": "RUB",
     "country": "Russia",
     "city": "Moscow",
