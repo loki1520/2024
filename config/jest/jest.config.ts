@@ -6,6 +6,10 @@
 import path from 'path';
 
 export default {
+    globals: {
+        __IS_DEV__: true,
+        __API__: '',
+    },
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -21,10 +25,6 @@ export default {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
-    },
-    // A set of global variables that need to be available in all test environments
-    globals: {
-        __IS_DEV__: true,
     },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,

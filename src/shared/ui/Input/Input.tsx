@@ -1,38 +1,21 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
+import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange'
->;
-// Мы устранили ошибку несовместимости типов, которая возникала из-за того, что onChange
-// в InputHTMLAttributes принимает событие, а у нас — строку. Для решения мы исключили
-// value и onChange из стандартных атрибутов с помощью Omit и переопределили их с подходящими
-// типами в нашем интерфейсе.
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
 
-interface inputProps extends HTMLInputProps {
+interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string;
     onChange?: (value: string) => void;
     autofocus?: boolean;
 }
 
-export const Input = memo((props: inputProps) => {
-    const {
-        className,
-        value,
-        onChange,
-        type = 'text',
-        placeholder,
-        autofocus,
-        ...otherProps
-    } = props;
-
+export const Input = memo((props: InputProps) => {
+    const { className, value, onChange, type = 'text', placeholder, autofocus, ...otherProps } = props;
+    const ref = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
-
-    const ref = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if (autofocus) {
@@ -41,49 +24,40 @@ export const Input = memo((props: inputProps) => {
         }
     }, [autofocus]);
 
-    const onFocus = () => {
-        setIsFocused(true);
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e.target.value);
+        setCaretPosition(e.target.value.length);
     };
 
     const onBlur = () => {
         setIsFocused(false);
     };
 
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length); // перемещаем каретку
+    const onFocus = () => {
+        setIsFocused(true);
     };
 
-    const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onSelect = (e: any) => {
         setCaretPosition(e?.target?.selectionStart || 0);
     };
 
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
-            {placeholder && (
-                <div className={cls.placeholder}>{`${placeholder}>`}</div>
-            )}
+            {placeholder && <div className={cls.placeholder}>{`${placeholder}>`}</div>}
             <div className={cls.caretWrapper}>
                 <input
                     ref={ref}
-                    className={cls.input}
                     type={type}
                     value={value}
                     onChange={onChangeHandler}
+                    className={cls.input}
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onSelect={onSelect}
                     {...otherProps}
                 />
-                {isFocused && (
-                    <span
-                        className={cls.caret}
-                        style={{ left: `${caretPosition * 0.6}em` }} // перемещаем каретку
-                    />
-                )}
+                {isFocused && <span className={cls.caret} style={{ left: `${caretPosition * 9}px` }} />}
             </div>
         </div>
     );
 });
-
-Input.displayName = 'Input';

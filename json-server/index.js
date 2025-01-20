@@ -1,7 +1,3 @@
-// https://www.npmjs.com/package/json-server/v/0.17.0
-
-// https://www.npmjs.com/package/json-server/v/0.17.0#custom-routes-example
-
 const fs = require('fs');
 const jsonServer = require('json-server');
 const path = require('path');

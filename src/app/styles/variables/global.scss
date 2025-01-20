@@ -1,6 +1,5 @@
 :root {
-    // --font-family-main: consolas, "Times New Roman", serif;
-    --font-family-main: "Courier New", courier, monospace; /* Моноширинный шрифт */
+    --font-family-main: consolas, "Times New Roman", serif;
     --font-size-m: 16px;
     --font-line-m: 24px;
     --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -21,6 +20,6 @@
 
     // Цвета
     --overlay-color: rgba(0 0 0 / 60%);
-    --red-light: #df1b1b;
-    --red-dark: #a71f1f;
+    --red-light: #f00;
+    --red-dark: #ce0505;
 }
