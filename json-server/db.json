@@ -15,7 +15,7 @@
     {
       "id": "1",
       "body": "some comment",
-      "postId": "1"
+      "postId": "1" 
     }
   ],
   "users": [
@@ -26,7 +26,7 @@
     }
   ],
   "profile": {
-    "first": "Loki",
+    "first": "Loki6664",
     "lastname": "Leprechaun",
     "age": 37,
     "currency": "RUB",
