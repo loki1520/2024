@@ -1,5 +1,8 @@
+import { Country, CountrySelect } from 'entities/Country';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
@@ -11,15 +14,15 @@ interface ProfileCardProps {
     data?: Profile;
     isLoading?: boolean;
     error?: string;
-    readonly?: boolean;
-    onChangeFirstname: (value?: string) => void;
-    onChangeLastname: (value?: string) => void;
-    onChangeAge: (value?: string) => void;
-    onChangeCity: (value?: string) => void;
-    // onChangeUsername: (value?: string) => void;
-    // onChangeAvatar: (value?: string) => void;
-    // onChangeCurrency: (value?: string) => void;
-    // onChangeCountry: (value?: string) => void;
+    readonly?: boolean; 
+    onChangeFirstname?: (value?: string) => void;
+    onChangeLastname?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
+    onChangeCurrency?: (currency: Currency) => void;
+    onChangeCountry?: (country: Country) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -33,10 +36,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeLastname,
         onChangeAge,
         onChangeCity,
-        // onChangeUsername,
-        // onChangeAvatar,
-        // onChangeCurrency,
-        // onChangeCountry,
+        onChangeUsername,
+        onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry,
     } = props;
     const { t } = useTranslation('profile');
 
@@ -70,9 +73,19 @@ export const ProfileCard = (props: ProfileCardProps) => {
         );
     }
 
+    const mods: Mods = {
+        [cls.editing]: !readonly,
+    };
+
     return (
-        <div className={classNames(cls.ProfileCard, {}, [className])}>
+        <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.data}>
+                {data?.avatar && (
+                    <div className={cls.avatarWrapper}>
+                        <Avatar src={data?.avatar} />
+                    </div>
+                )}
+
                 <Input
                     value={data?.first}
                     placeholder={t('Ваше имя')}
@@ -101,7 +114,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     onChange={onChangeCity}
                     readonly={readonly}
                 />
-                {/* <Input
+                <Input
                     value={data?.username}
                     placeholder={t('Введите имя пользователя')}
                     className={cls.input}
@@ -115,6 +128,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readonly={readonly}
                 />
+
                 <CurrencySelect
                     className={cls.input}
                     value={data?.currency}
@@ -126,7 +140,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     value={data?.country}
                     onChange={onChangeCountry}
                     readonly={readonly}
-                /> */}
+                />
             </div>
         </div>
     );
