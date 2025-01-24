@@ -1,26 +1,24 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { Country, CountrySelect } from 'entities/Country';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import { useTranslation } from 'react-i18next';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Currency } from 'entities/Currency/model/types/currency';
-import { CurrencySelect } from 'entities/Currency';
-import { Country } from 'entities/Country/model/types/country';
-import { CountrySelect } from 'entities/Country';
-import cls from './ProfileCard.module.scss';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Profile } from '../../model/types/profile';
+import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
     data?: Profile;
-    error?: string;
     isLoading?: boolean;
+    error?: string;
     readonly?: boolean;
-    onChangeLastname?: (value?: string) => void;
     onChangeFirstname?: (value?: string) => void;
-    onChangeCity?: (value?: string) => void;
+    onChangeLastname?: (value?: string) => void;
     onChangeAge?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
     onChangeUsername?: (value?: string) => void;
     onChangeAvatar?: (value?: string) => void;
     onChangeCurrency?: (currency: Currency) => void;
@@ -38,10 +36,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeLastname,
         onChangeAge,
         onChangeCity,
-        onChangeAvatar,
         onChangeUsername,
-        onChangeCountry,
+        onChangeAvatar,
         onChangeCurrency,
+        onChangeCountry,
     } = props;
     const { t } = useTranslation('profile');
 
@@ -87,6 +85,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         <Avatar src={data?.avatar} />
                     </div>
                 )}
+
                 <Input
                     value={data?.first}
                     placeholder={t('Ваше имя')}
@@ -129,6 +128,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readonly={readonly}
                 />
+
                 <CurrencySelect
                     className={cls.input}
                     value={data?.currency}

@@ -4,10 +4,10 @@ import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
-    readonly: true,
     isLoading: false,
     error: undefined,
     data: undefined,
+    readonly: true,
 };
 
 export const profileSlice = createSlice({
@@ -47,6 +47,7 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
+
             .addCase(updateProfileData.pending, (state) => {
                 state.validateErrors = undefined;
                 state.isLoading = true;

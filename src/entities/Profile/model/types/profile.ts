@@ -1,5 +1,5 @@
-import { Currency } from 'entities/Currency/model/types/currency';
-import { Country } from 'entities/Country/model/types/country';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
 
 export enum ValidateProfileError {
     INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',
@@ -8,7 +8,6 @@ export enum ValidateProfileError {
     NO_DATA = 'NO_DATA',
     SERVER_ERROR = 'SERVER_ERROR',
 }
-
 export interface Profile {
     first?: string;
     lastname?: string;

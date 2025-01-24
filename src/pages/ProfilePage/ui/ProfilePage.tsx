@@ -1,26 +1,26 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
 import {
     fetchProfileData,
     getProfileError,
     getProfileForm,
+    getProfileIReadonly,
     getProfileIsLoading,
-    getProfileReadonly,
     getProfileValidateErrors,
     profileActions,
     ProfileCard,
     profileReducer,
-    ValidateProfileError,
 } from 'entities/Profile';
+import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { useCallback, useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { classNames } from 'shared/lib/classNames/classNames';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -33,12 +33,12 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
-    const { t } = useTranslation('profile');
+    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
-    const readonly = useSelector(getProfileReadonly);
+    const readonly = useSelector(getProfileIReadonly);
     const validateErrors = useSelector(getProfileValidateErrors);
 
     const validateErrorTranslates = {
@@ -54,9 +54,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     };
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
+        dispatch(fetchProfileData());
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
@@ -123,8 +121,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     validateErrors.map((err) => (
                         <Text
                             key={err}
-                            theme={TextTheme.ERROR}
                             text={validateErrorTranslates[err]}
+                            theme={TextTheme.ERROR}
                         />
                     ))}
                 <ProfileCard
@@ -134,8 +132,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     readonly={readonly}
                     onChangeFirstname={onChangeFirstname}
                     onChangeLastname={onChangeLastname}
-                    onChangeAge={onChangeAge}
                     onChangeCity={onChangeCity}
+                    onChangeAge={onChangeAge}
                     onChangeUsername={onChangeUsername}
                     onChangeAvatar={onChangeAvatar}
                     onChangeCurrency={onChangeCurrency}

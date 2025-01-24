@@ -67,7 +67,7 @@ export const Input = memo((props: InputProps) => {
     };
 
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div className={cls.placeholder}>{`${placeholder}>`}</div>
             )}
@@ -84,10 +84,11 @@ export const Input = memo((props: InputProps) => {
                     readOnly={readonly}
                     {...otherProps}
                 />
+                {/* каретка */}
                 {isCaretVisible && (
                     <span
                         className={cls.caret}
-                        style={{ left: `${caretPosition * 9}px` }}
+                        style={{ left: `${caretPosition * 7}px` }}
                     />
                 )}
             </div>

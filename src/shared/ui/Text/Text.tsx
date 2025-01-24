@@ -12,7 +12,6 @@ export enum TextAlign {
     LEFT = 'left',
     CENTER = 'center',
 }
-
 interface TextProps {
     className?: string;
     title?: string;
@@ -31,8 +30,8 @@ export const Text = memo((props: TextProps) => {
     } = props;
 
     const mods: Mods = {
-        [cls[theme]]: true,
         [cls[align]]: true,
+        [cls[theme]]: true,
     };
 
     return (
