@@ -1,26 +1,26 @@
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import {
-    fetchProfileData,
-    getProfileError,
-    getProfileForm,
-    getProfileIReadonly,
-    getProfileIsLoading,
-    getProfileValidateErrors,
-    profileActions,
-    ProfileCard,
-    profileReducer,
-} from 'entities/Profile';
-import { ValidateProfileError } from 'entities/Profile/model/types/profile';
-import { useCallback, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    fetchProfileData,
+    getProfileError,
+    getProfileForm,
+    getProfileIsLoading,
+    getProfileReadonly,
+    getProfileValidateErrors,
+    profileActions,
+    ProfileCard,
+    profileReducer,
+    ValidateProfileError,
+} from 'entities/Profile';
+import { useCallback, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -33,12 +33,12 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
-    const readonly = useSelector(getProfileIReadonly);
+    const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateErrors);
 
     const validateErrorTranslates = {
@@ -54,7 +54,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     };
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
@@ -121,8 +123,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     validateErrors.map((err) => (
                         <Text
                             key={err}
-                            text={validateErrorTranslates[err]}
                             theme={TextTheme.ERROR}
+                            text={validateErrorTranslates[err]}
                         />
                     ))}
                 <ProfileCard
@@ -132,8 +134,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     readonly={readonly}
                     onChangeFirstname={onChangeFirstname}
                     onChangeLastname={onChangeLastname}
-                    onChangeCity={onChangeCity}
                     onChangeAge={onChangeAge}
+                    onChangeCity={onChangeCity}
                     onChangeUsername={onChangeUsername}
                     onChangeAvatar={onChangeAvatar}
                     onChangeCurrency={onChangeCurrency}

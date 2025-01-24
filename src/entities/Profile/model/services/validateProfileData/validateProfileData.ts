@@ -21,7 +21,5 @@ export const validateProfileData = (profile?: Profile) => {
         errors.push(ValidateProfileError.INCORRECT_COUNTRY);
     }
 
-    console.log(' 🍀===>>', errors);
-
     return errors;
 };

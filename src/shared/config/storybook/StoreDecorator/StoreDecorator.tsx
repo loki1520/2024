@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
@@ -12,15 +12,10 @@ const defaultAsyncReducers: ReducersList = {
 
 export const StoreDecorator =
     (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
-        (StoryComponent: Story) => {
-            return (
-                <StoreProvider
-                    initialState={state}
-                    asyncReducers={{
-                        ...defaultAsyncReducers,
-                        ...asyncReducers,
-                    }}>
-                    <StoryComponent />
-                </StoreProvider>
-            );
-        };
+    (StoryComponent: Story) => (
+        <StoreProvider
+            initialState={state}
+            asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
+            <StoryComponent />
+        </StoreProvider>
+    );
