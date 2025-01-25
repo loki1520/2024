@@ -31,7 +31,7 @@ module.exports = {
         ], // Задает максимальную длину строки в символах
         'react/jsx-indent': [2, 4], // Задает отступы для JSX-разметки (2 - ошибка, 4 пробела для отступа)
         'react/jsx-indent-props': [2, 4], // Задает отступы для пропсов в JSX (2 - ошибка, 4 пробела)
-        indent: [2, 4], // Общие правила отступов для JavaScript и TypeScript файлов (4 пробела)
+        indent: ['error', 4, { SwitchCase: 1 }], // Общие правила отступов для JavaScript и TypeScript файлов (4 пробела)
         'react/jsx-filename-extension': [
             2,
             { extensions: ['.js', '.jsx', '.tsx'] },
