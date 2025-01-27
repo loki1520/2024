@@ -1,5 +1,6 @@
 import { ArticleDetails } from 'entities/Article';
 import { CommentList } from 'entities/Comment/ui/CommentList/CommentList';
+import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,16 +11,12 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text } from 'shared/ui/Text/Text';
-import {
-    getArticleCommentsError,
-    getArticleCommentsIsLoading,
-} from '../../model/selectors/comments';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import {
     articleDetailsCommentsReducer,
     getArticleComments,
 } from '../../model/slices/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
-import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 interface ArticleDetailsPageProps {
     className?: string;
